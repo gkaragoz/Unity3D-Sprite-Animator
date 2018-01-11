@@ -19,15 +19,15 @@ public class AnimationController : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 	}
 	
-	void Update() {
+	void FixedUpdate() {
 		if (currentAnimation != null) {
 			if (Time.time > nextFrameTime) {
 				nextFrameTime = Time.time + frameRate;
 
 				if (currentFrameIndex < currentAnimation.sprites.Length) {
 					spriteRenderer.sprite = currentAnimation.sprites[currentFrameIndex++];
-				} else {
-					currentFrameIndex = 0;
+					if (currentFrameIndex >= currentAnimation.sprites.Length)
+						currentFrameIndex = 0;
 				}
 			}
 		}
