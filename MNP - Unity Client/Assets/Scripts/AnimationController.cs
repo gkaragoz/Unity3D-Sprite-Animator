@@ -4,30 +4,40 @@ using UnityEngine;
 
 public class AnimationController : MonoBehaviour {
 
-	public Sprite []sprites;
-
 	public float frameRate = 0.2f;
 
-	public float nextFrameTime;
+	private Animation currentAnimation;
 
-	public int currentFrameIndex;
+	[SerializeField]
+	private int currentFrameIndex;
+	
+	private float nextFrameTime;
 
-	public SpriteRenderer spriteRenderer;
+	private SpriteRenderer spriteRenderer;
 
-	void Start() {
+	void Awake() {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 	}
-
+	
 	void Update() {
-		if (Time.time > nextFrameTime) {
-			nextFrameTime = Time.time + frameRate;
+		if (currentAnimation != null) {
+			if (Time.time > nextFrameTime) {
+				nextFrameTime = Time.time + frameRate;
 
-			if (currentFrameIndex < sprites.Length) {
-				spriteRenderer.sprite = sprites [currentFrameIndex++];
-			} else {
-				currentFrameIndex = 0;
+				if (currentFrameIndex < currentAnimation.sprites.Length) {
+					spriteRenderer.sprite = currentAnimation.sprites[currentFrameIndex++];
+				} else {
+					currentFrameIndex = 0;
+				}
 			}
 		}
 	}
 
+	public void Play(Animation animation) {
+		this.currentAnimation = animation;
+	}
+
+	public void Stop() {
+		this.currentAnimation = null;
+	}
 }
