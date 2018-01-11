@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour {
 
 	public float speed;
+	public Enums.Direction currentDirection;
 
 	private AnimationManager animationManager;
 	private Rigidbody2D rb2D;
-	private Vector2 direction;
-	private Enums.Direction lastDirection;
+	private Vector2 directionVector;
 
 	void Awake() {
 		animationManager = GetComponent<AnimationManager>();
@@ -20,36 +20,39 @@ public class PlayerManager : MonoBehaviour {
 		float horizontal = Input.GetAxisRaw("Horizontal");
 		float vertical = Input.GetAxisRaw("Vertical");
 
-		direction = new Vector2(horizontal, vertical);
+		directionVector = new Vector2(horizontal, vertical);
 
-		animationManager.StartAnimation(Enums.AnimationState.Run, GetDirection(direction));
+		if (directionVector != Vector2.zero)
+			animationManager.StartAnimation(Enums.AnimationState.Run, GetDirection(directionVector));
+		else
+			animationManager.StartAnimation(Enums.AnimationState.Idle, currentDirection);
 	}
 
 	Enums.Direction GetDirection(Vector2 direction) {
 		if (direction.x == 1 && direction.y == 1) {
-			lastDirection = Enums.Direction.UpRight;
+			currentDirection = Enums.Direction.UpRight;
 		}
 		if (direction.x == -1 && direction.y == 1) {
-			lastDirection = Enums.Direction.UpLeft;
+			currentDirection = Enums.Direction.UpLeft;
 		}
 		if (direction.x == 1 && direction.y == -1) {
-			lastDirection = Enums.Direction.DownRight;
+			currentDirection = Enums.Direction.DownRight;
 		}
 		if (direction.x == -1 && direction.y == -1) {
-			lastDirection = Enums.Direction.DownLeft;
+			currentDirection = Enums.Direction.DownLeft;
 		}
 		if (direction == Vector2.right) {
-			lastDirection = Enums.Direction.Right;
+			currentDirection = Enums.Direction.Right;
 		}
 		if (direction == Vector2.left) {
-			lastDirection = Enums.Direction.Left;
+			currentDirection = Enums.Direction.Left;
 		}
 		if (direction == Vector2.up) {
-			lastDirection = Enums.Direction.Up;
+			currentDirection = Enums.Direction.Up;
 		}
 		if (direction == Vector2.down) {
-			lastDirection = Enums.Direction.Down;
+			currentDirection = Enums.Direction.Down;
 		}
-		return lastDirection;
+		return currentDirection;
 	} 
 }

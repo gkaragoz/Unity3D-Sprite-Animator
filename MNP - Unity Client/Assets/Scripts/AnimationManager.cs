@@ -25,13 +25,11 @@ public class AnimationManager : MonoBehaviour {
                 INFO_CURRENT_ANIMATION = animationEntity.animationState + " " + selectedAnimation.direction;
             }
         }
-
-        animationController.Play(selectedAnimation);
-        Debug.Log("Animation played: " + INFO_CURRENT_ANIMATION);
+        if (selectedAnimation != animationController.GetCurrentAnimation())
+            animationController.Play(selectedAnimation);
     }
 
     public void StopAnimation() {
         animationController.Stop();
-        Debug.Log("Animation stopped: " + INFO_CURRENT_ANIMATION);
     }
 }
