@@ -137,6 +137,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &448860062 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1581601211503320, guid: 7859114bb3be92241ab360cddfe828f5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1247167537}
+--- !u!50 &448860063
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 448860062}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &850979146
 Prefab:
   m_ObjectHideFlags: 0
@@ -222,6 +247,11 @@ Prefab:
     - target: {fileID: 4262999922091084, guid: 7859114bb3be92241ab360cddfe828f5, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114431128604982272, guid: 7859114bb3be92241ab360cddfe828f5,
+        type: 2}
+      propertyPath: speed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7859114bb3be92241ab360cddfe828f5, type: 2}

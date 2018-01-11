@@ -8,12 +8,10 @@ public class PlayerManager : MonoBehaviour {
 	public Enums.Direction currentDirection;
 
 	private AnimationManager animationManager;
-	private Rigidbody2D rb2D;
 	private Vector2 directionVector;
 
 	void Awake() {
 		animationManager = GetComponent<AnimationManager>();
-		rb2D = GetComponent<Rigidbody2D>();
 	}
 
 	void FixedUpdate () {
@@ -22,10 +20,12 @@ public class PlayerManager : MonoBehaviour {
 
 		directionVector = new Vector2(horizontal, vertical);
 
-		if (directionVector != Vector2.zero)
+		if (directionVector != Vector2.zero) {
+			transform.Translate(directionVector * speed * Time.fixedDeltaTime);
 			animationManager.StartAnimation(Enums.AnimationState.Run, GetDirection(directionVector));
-		else
+		} else {
 			animationManager.StartAnimation(Enums.AnimationState.Idle, currentDirection);
+		}
 	}
 
 	Enums.Direction GetDirection(Vector2 direction) {
