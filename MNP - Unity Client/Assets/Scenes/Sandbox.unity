@@ -142,7 +142,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1581601211503320, guid: 7859114bb3be92241ab360cddfe828f5,
     type: 2}
   m_PrefabInternal: {fileID: 1247167537}
---- !u!114 &448860063
+--- !u!114 &448860067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  currentDirection: 1
 --- !u!4 &865845977 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4262999922091084, guid: 7859114bb3be92241ab360cddfe828f5,
